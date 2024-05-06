@@ -1,0 +1,40 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore generated files by IDEs
+.vscode/
+.idea/
+
+# Ignore logs and other runtime data
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Ignore local configuration files
+.env
+.env.local
+.env.*.local
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore package-lock.json (for npm)
+package-lock.json
+# Ignore yarn.lock (for yarn)
+yarn.lock
+
+# Ignore TypeScript build directory
+/dist/
+
+# Ignore Nx cache directory
+.nx/
+
+# Ignore pnpm lockfile
+pnpm-lock.yaml
+
+# Ignore editor temporary files
+*.swp

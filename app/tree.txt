@@ -1,0 +1,67 @@
+.
+├── my-express-app
+│   ├── README.md
+│   ├── build.ts
+│   ├── env
+│   │   ├── development.env
+│   │   ├── production.env
+│   │   └── test.env
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── spec
+│   │   ├── index.ts
+│   │   ├── nodemon.json
+│   │   ├── support
+│   │   │   ├── Paths.ts
+│   │   │   ├── apiCb.ts
+│   │   │   └── jasmine.json
+│   │   ├── tests
+│   │   │   └── users.spec.ts
+│   │   └── types
+│   │       ├── misc.ts
+│   │       └── supertest
+│   │           └── index.d.ts
+│   ├── src
+│   │   ├── constants
+│   │   │   ├── EnvVars.ts
+│   │   │   ├── HttpStatusCodes.ts
+│   │   │   ├── Paths.ts
+│   │   │   └── misc.ts
+│   │   ├── index.ts
+│   │   ├── models
+│   │   │   └── User.ts
+│   │   ├── other
+│   │   │   └── classes.ts
+│   │   ├── pre-start.ts
+│   │   ├── public
+│   │   │   ├── scripts
+│   │   │   │   ├── http.js
+│   │   │   │   └── users.js
+│   │   │   └── stylesheets
+│   │   │       └── users.css
+│   │   ├── repos
+│   │   │   ├── MockOrm.ts
+│   │   │   ├── UserRepo.ts
+│   │   │   └── database.json
+│   │   ├── routes
+│   │   │   ├── UserRoutes.ts
+│   │   │   ├── api.ts
+│   │   │   └── types
+│   │   │       ├── express
+│   │   │       │   ├── index.d.ts
+│   │   │       │   └── misc.ts
+│   │   │       └── types.ts
+│   │   ├── server.ts
+│   │   ├── services
+│   │   │   └── UserService.ts
+│   │   ├── util
+│   │   │   └── misc.ts
+│   │   └── views
+│   │       └── users.html
+│   ├── tsconfig.json
+│   └── tsconfig.prod.json
+├── package-lock.json
+├── package.json
+└── tree.txt
+
+22 directories, 43 files
