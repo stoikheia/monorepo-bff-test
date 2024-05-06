@@ -59,7 +59,7 @@
     "node": "^22.1.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "@stoikheia/registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
