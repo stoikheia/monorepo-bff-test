@@ -20,6 +20,9 @@ import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 import { NodeEnvs } from '@src/constants/misc';
 import { RouteError } from '@src/other/classes';
 
+import ApiA from '@stoikheia/monorepo-bff-test-api-a';
+import ApiB from '@stoikheia/monorepo-bff-test-api-b';
+
 
 // **** Variables **** //
 
@@ -86,6 +89,8 @@ app.get('/users', (_: Request, res: Response) => {
   return res.sendFile('users.html', { root: viewsDir });
 });
 
+app.use('/api/api-a', ApiA);
+app.use('/api/api-b', ApiB);
 
 // **** Export default **** //
 
