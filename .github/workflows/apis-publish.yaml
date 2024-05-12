@@ -12,17 +12,19 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # Fetch all history for git diff
 
     - name: Install dependencies
       run: npm install
 
     - name: Determine package to publish
       run: |
-        changed_files=$(git diff --name-only HEAD^ HEAD --relative=apis/)
+        changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} --relative=apis/)
         for file in $changed_files; do
           if [[ "$file" == */package.json ]]; then
             package_name=$(dirname "$file")
-            version_changed=$(git diff HEAD^ HEAD -- "$file" | jq '.version' | wc -l)
+            version_changed=$(git diff ${{ github.event.before }} ${{ github.event.after }} -- "$file" | jq '.version' | wc -l)
             if [[ $version_changed -gt 0 ]]; then
               npm publish --prefix "apis/$package_name"
             fi
