@@ -2,6 +2,8 @@ name: Publish Package
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'apis/**'
 
@@ -20,7 +22,7 @@ jobs:
 
     - name: Determine package to publish
       run: |
-        changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} --relative=apis/)
+        changed_files=$(git diff ${{ github.event.before }} ${{ github.event.after }} --name-only --relative=apis/)
         for file in $changed_files; do
           if [[ "$file" == */package.json ]]; then
             package_name=$(dirname "$file")
