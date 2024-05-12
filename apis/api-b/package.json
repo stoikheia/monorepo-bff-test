@@ -30,16 +30,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@stoikheia/monorepo-bff-test-api-a",
+  "name": "@stoikheia/monorepo-bff-test-api-b",
   "author": "stoikheia",
-  "module": "dist/api-a.esm.js",
+  "module": "dist/api-b.esm.js",
   "size-limit": [
     {
-      "path": "dist/api-a.cjs.production.min.js",
+      "path": "dist/api-b.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/api-a.esm.js",
+      "path": "dist/api-b.esm.js",
       "limit": "10 KB"
     }
   ],
