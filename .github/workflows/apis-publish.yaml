@@ -1,0 +1,30 @@
+name: Publish Package
+
+on:
+  push:
+    paths:
+      - 'apis/**'
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Determine package to publish
+      run: |
+        changed_files=$(git diff --name-only HEAD^ HEAD --relative=apis/)
+        for file in $changed_files; do
+          if [[ "$file" == */package.json ]]; then
+            package_name=$(dirname "$file")
+            version_changed=$(git diff HEAD^ HEAD -- "$file" | jq '.version' | wc -l)
+            if [[ $version_changed -gt 0 ]]; then
+              npm publish --prefix "apis/$package_name"
+            fi
+          fi
+        done
