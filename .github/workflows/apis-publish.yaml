@@ -14,11 +14,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      #with:
+      #  fetch-depth: 0 # Fetch all history for git diff
       with:
-        fetch-depth: 0 # Fetch all history for git diff
+        ref: ${{ github.event.pull_request.head.sha }} # fetch for git diff
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install pnpm
+      run: npm install -g pnpm
 
     - name: Install dependencies
-      run: npm install
+      run: pnpm install
 
     - name: Determine package to publish
       run: |
