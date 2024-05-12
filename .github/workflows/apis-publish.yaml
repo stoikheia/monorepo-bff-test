@@ -26,6 +26,11 @@ jobs:
     - name: Install pnpm
       run: npm install -g pnpm
 
+    - name: Login to GitHub Packages
+      run: npm login --registry=https://npm.pkg.github.com --scope=@stoikheia --always-auth
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
     - name: Install dependencies
       run: pnpm install
 
