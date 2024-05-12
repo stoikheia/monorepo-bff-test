@@ -17,9 +17,8 @@ export interface IApiBRes extends express.Response {
 /**
  * 
  */
-async function ApiB(req: IApiBReq<{ b: IApiB}>, res: IApiBRes) {
-  const { b } = req.body;
-  console.log(b.message+"v0.1.2");
+async function ApiB(_: IApiBReq<{ a: IApiB}>, res: IApiBRes) {
+  console.log("v0.1.3");
   return res;
 }
 
