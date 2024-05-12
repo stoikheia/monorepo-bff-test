@@ -25,10 +25,14 @@ jobs:
         changed_files=$(git diff ${{ github.event.before }} ${{ github.event.after }} --name-only --relative=apis/)
         for file in $changed_files; do
           if [[ "$file" == */package.json ]]; then
+            file='apis/'$file
             package_name=$(dirname "$file")
-            version_changed=$(git diff ${{ github.event.before }} ${{ github.event.after }} -- "$file" | jq '.version' | wc -l)
-            if [[ $version_changed -gt 0 ]]; then
-              npm publish --prefix "apis/$package_name"
+            old_version=$(git show ${{ github.event.before }}:"$file" | jq -r '.version')
+            new_version=$(git show ${{ github.event.after }}:"$file" | jq -r '.version')
+            if [[ "$old_version" != "$new_version" ]]; then
+              cd "$package_name"
+              pnpm publish
+              cd -
             fi
           fi
         done
