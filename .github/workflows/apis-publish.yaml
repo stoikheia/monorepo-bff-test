@@ -10,6 +10,11 @@ on:
 jobs:
   publish-package:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      packages: write
+      contents: write
 
     steps:
     - name: Checkout repository
@@ -21,15 +26,15 @@ jobs:
       #  ref: ${{ github.event.pull_request.head.sha }} # fetch for git diff 
 
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
+        with:
+          #node-version: 18
+          check-latest: true
+          cache: npm
+          registry-url: https://npm.pkg.github.com/
 
     - name: Install pnpm
       run: npm install -g pnpm
-
-    - name: Login to GitHub Packages
-      run: npm login --registry=https://npm.pkg.github.com --scope=@stoikheia --always-auth
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
     - name: Install dependencies
       run: pnpm install
@@ -50,3 +55,5 @@ jobs:
             fi
           fi
         done
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
