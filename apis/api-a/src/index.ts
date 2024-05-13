@@ -20,7 +20,7 @@ export interface IApiARes extends express.Response {
  * 
  */
 async function ApiA(_: IApiAReq<{ a: IApiA}>, res: IApiARes) {
-  console.log("v0.1.10");
+  console.log("api-a: v0.1.11");
   //console.log(req);
   //return res.status(200).send("api-a" + a.message);
   //return res.send("api-a" + b.message);
